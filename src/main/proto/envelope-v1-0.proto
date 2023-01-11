@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/timestamp.proto";
+
+package com.example.demo.events.envelope.v1;
+
+message Envelope {
+  message Metadata {
+    string id = 1;
+    string schema = 2;
+    int32 majorVersion = 3;
+    int32 minorVersion = 4;
+
+    google.protobuf.Timestamp timestamp = 5;
+    google.protobuf.StringValue traceId = 6;
+  }
+
+  Metadata metadata = 1;
+  bytes payload = 2;
+}

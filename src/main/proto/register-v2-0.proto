@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package com.example.demo.events.register.v2;
+
+message NewLoginEvent {
+  string name = 1;
+  string reason = 2;
+}
+
+message RegisterEvent {
+  oneof event {
+    NewLoginEvent newLogin = 1;
+  }
+}
