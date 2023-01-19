@@ -1,13 +1,20 @@
 package com.example.demo.user.adapter.out.database;
 
+import am.ik.yavi.core.ConstraintViolation;
 import com.example.demo.user.domain.User;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import io.vavr.control.Either;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class UserEntity {
+
+    @Id
+    private String id;
+    private String name;
 
     public static UserEntity fromDomain(User user) {
         UserEntity entity = new UserEntity();
@@ -16,13 +23,8 @@ public class UserEntity {
         return entity;
     }
 
-    @Id
-    private String id;
-
-    private String name;
-
-    public User toDomain() {
-        return new User(this.getId(), this.getName());
+    public Either<List<ConstraintViolation>, User> toDomain() {
+        return User.of(this.getId(), this.getName());
     }
 
     public String getId() {
@@ -40,4 +42,5 @@ public class UserEntity {
     public void setName(String name) {
         this.name = name;
     }
+
 }

@@ -20,10 +20,10 @@ public abstract class AbstractArchUnitTest {
         List<ArchRule> rules = new LinkedList<>();
         rules.add(rule(".", "."));
         rules.add(rule("adapter.in..", "adapter.in.."));
-        rules.add(rule("app", "app"));
+        rules.add(rule("services", "services"));
         rules.add(rule("domain", "."));
-        rules.add(rule("ports.in", "adapter.in..", "app", "ports.in"));
-        rules.add(rule("ports.out", "adapter.out..", "app", "ports.out"));
+        rules.add(rule("ports.in", "adapter.in..", "ports.in", "services"));
+        rules.add(rule("ports.out", "adapter.out..", "ports.out", "services"));
 
         for (ArchRule rule : rules) {
             rule.check(importedClasses);

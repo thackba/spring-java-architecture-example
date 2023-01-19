@@ -1,4 +1,4 @@
-package com.example.demo.register.app;
+package com.example.demo.register.services;
 
 import com.example.demo.register.domain.Login;
 import com.example.demo.register.ports.in.RegisterLogin;
@@ -22,6 +22,5 @@ public class RegisterLoginService implements RegisterLogin {
 			informAboutLogin.informAboutLogin(login);
 			return true;
 		}).validate(command.toDomain()).orElseGet(cvs -> false);
-
 	}
 }

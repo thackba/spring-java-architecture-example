@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id "com.google.protobuf" version "0.9.1"
-    id 'org.springframework.boot' version '3.0.1'
+    id 'org.springframework.boot' version '2.7.7'
     id 'io.spring.dependency-management' version '1.1.0'
 }
 
@@ -15,6 +15,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'io.vavr:vavr:0.10.4'
     implementation 'org.liquibase:liquibase-core'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-amqp'
@@ -22,6 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'am.ik.yavi:yavi:0.12.0'
+    implementation 'io.camunda:spring-zeebe-starter:8.1.14'
     runtimeOnly 'com.h2database:h2'
     runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

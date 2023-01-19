@@ -19,10 +19,10 @@ class UserRepositoryTest {
     @Test
     public void testDuplicateName() {
         String userId1 = UUID.randomUUID().toString();
-        UserEntity userEntity1 = UserEntity.fromDomain(new User(userId1, "username"));
+        UserEntity userEntity1 = UserEntity.fromDomain(User.of(userId1, "username").get());
         userRepository.save(userEntity1);
         String userId2 = UUID.randomUUID().toString();
-        UserEntity userEntity2 = UserEntity.fromDomain(new User(userId2, "username"));
+        UserEntity userEntity2 = UserEntity.fromDomain( User.of(userId2, "username").get());
         assertThatThrownBy(() -> userRepository.save(userEntity2))
                 .hasCauseInstanceOf(JDBCException.class);
     }
